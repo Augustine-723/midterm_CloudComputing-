@@ -1,0 +1,69 @@
+{
+  "model_path": "/app/models/distributed_cpu_best.h5",
+  "inference_test": {
+    "input_shape": [
+      1,
+      25
+    ],
+    "output_shape": [
+      1,
+      5
+    ],
+    "prob_sum": 1.0,
+    "sample_probs": [
+      4.866158699268499e-32,
+      1.1932464412579445e-15,
+      1.3402931373156812e-23,
+      1.0,
+      1.1171585358182856e-11
+    ],
+    "sample_action": 3,
+    "status": "PASSED"
+  },
+  "num_rounds": 10,
+  "episodes_per_round": 10,
+  "total_episodes": 100,
+  "teacher_round_rewards_int": [
+    94,
+    97,
+    91,
+    83,
+    87,
+    96,
+    95,
+    91,
+    80,
+    98
+  ],
+  "round_rewards_float": [
+    94.21,
+    97.62,
+    91.29,
+    83.92,
+    87.54,
+    96.0,
+    95.58,
+    91.04,
+    80.67,
+    98.21
+  ],
+  "mean_round_reward": 91.61,
+  "std_round_reward": 5.63,
+  "mean_episode_reward": 9.16,
+  "std_episode_reward": 1.81,
+  "mean_episode_steps": 10.3,
+  "collision_count": 14,
+  "collision_rate": 14.0,
+  "arrival_count": 0,
+  "arrival_rate": 0.0,
+  "timeout_count": 86,
+  "timeout_rate": 86.0,
+  "action_distribution": {
+    "0: LANE_LEFT": 2.42,
+    "1: IDLE": 24.76,
+    "2: LANE_RIGHT": 0.87,
+    "3: FASTER": 25.05,
+    "4: SLOWER": 46.91
+  },
+  "status": "COMPLETED_SUCCESSFULLY"
+}

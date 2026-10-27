@@ -1,0 +1,210 @@
+{
+  "exp_a_standard": {
+    "accuracy": 0.9464,
+    "loss": 0.14980070292949677,
+    "macro_precision": 0.910288540811689,
+    "macro_recall": 0.9291577155055425,
+    "macro_f1": 0.9188388251165565,
+    "weighted_f1": 0.9464474929945541,
+    "weighted_precision": 0.9465787084356784,
+    "weighted_recall": 0.9464,
+    "per_class": {
+      "0: LANE_LEFT": {
+        "class_id": 0,
+        "name": "LANE_LEFT",
+        "support": 134,
+        "tp": 118,
+        "fp": 12,
+        "fn": 16,
+        "precision": 0.9076923076923077,
+        "recall": 0.8805970149253731,
+        "f1_score": 0.8939393939393939
+      },
+      "1: IDLE": {
+        "class_id": 1,
+        "name": "IDLE",
+        "support": 1271,
+        "tp": 1201,
+        "fp": 73,
+        "fn": 70,
+        "precision": 0.9427001569858713,
+        "recall": 0.94492525570417,
+        "f1_score": 0.9438113948919451
+      },
+      "2: LANE_RIGHT": {
+        "class_id": 2,
+        "name": "LANE_RIGHT",
+        "support": 40,
+        "tp": 37,
+        "fp": 9,
+        "fn": 3,
+        "precision": 0.8043478260869565,
+        "recall": 0.925,
+        "f1_score": 0.8604651162790697
+      },
+      "3: FASTER": {
+        "class_id": 3,
+        "name": "FASTER",
+        "support": 1424,
+        "tp": 1335,
+        "fp": 93,
+        "fn": 89,
+        "precision": 0.9348739495798319,
+        "recall": 0.9375,
+        "f1_score": 0.9361851332398318
+      },
+      "4: SLOWER": {
+        "class_id": 4,
+        "name": "SLOWER",
+        "support": 2131,
+        "tp": 2041,
+        "fp": 81,
+        "fn": 90,
+        "precision": 0.9618284637134779,
+        "recall": 0.9577663068981699,
+        "f1_score": 0.9597930872325416
+      }
+    },
+    "confusion_matrix": [
+      [
+        118,
+        10,
+        0,
+        3,
+        3
+      ],
+      [
+        5,
+        1201,
+        5,
+        35,
+        25
+      ],
+      [
+        0,
+        1,
+        37,
+        2,
+        0
+      ],
+      [
+        4,
+        29,
+        3,
+        1335,
+        53
+      ],
+      [
+        3,
+        33,
+        1,
+        53,
+        2041
+      ]
+    ]
+  },
+  "exp_b_weighted": {
+    "accuracy": 0.9246,
+    "loss": 0.2055036574602127,
+    "macro_precision": 0.8216135911011755,
+    "macro_recall": 0.9297315574366785,
+    "macro_f1": 0.864400421997294,
+    "weighted_f1": 0.925542143959982,
+    "weighted_precision": 0.9280930612077211,
+    "weighted_recall": 0.9246,
+    "per_class": {
+      "0: LANE_LEFT": {
+        "class_id": 0,
+        "name": "LANE_LEFT",
+        "support": 134,
+        "tp": 129,
+        "fp": 48,
+        "fn": 5,
+        "precision": 0.7288135593220338,
+        "recall": 0.9626865671641791,
+        "f1_score": 0.8295819935691318
+      },
+      "1: IDLE": {
+        "class_id": 1,
+        "name": "IDLE",
+        "support": 1271,
+        "tp": 1156,
+        "fp": 102,
+        "fn": 115,
+        "precision": 0.918918918918919,
+        "recall": 0.9095200629425649,
+        "f1_score": 0.9141953341241598
+      },
+      "2: LANE_RIGHT": {
+        "class_id": 2,
+        "name": "LANE_RIGHT",
+        "support": 40,
+        "tp": 37,
+        "fp": 27,
+        "fn": 3,
+        "precision": 0.578125,
+        "recall": 0.925,
+        "f1_score": 0.7115384615384616
+      },
+      "3: FASTER": {
+        "class_id": 3,
+        "name": "FASTER",
+        "support": 1424,
+        "tp": 1298,
+        "fp": 94,
+        "fn": 126,
+        "precision": 0.9324712643678161,
+        "recall": 0.9115168539325843,
+        "f1_score": 0.9218749999999999
+      },
+      "4: SLOWER": {
+        "class_id": 4,
+        "name": "SLOWER",
+        "support": 2131,
+        "tp": 2003,
+        "fp": 106,
+        "fn": 128,
+        "precision": 0.9497392128971076,
+        "recall": 0.9399343031440638,
+        "f1_score": 0.944811320754717
+      }
+    },
+    "confusion_matrix": [
+      [
+        129,
+        5,
+        0,
+        0,
+        0
+      ],
+      [
+        29,
+        1156,
+        13,
+        35,
+        38
+      ],
+      [
+        0,
+        1,
+        37,
+        2,
+        0
+      ],
+      [
+        8,
+        45,
+        5,
+        1298,
+        68
+      ],
+      [
+        11,
+        51,
+        9,
+        57,
+        2003
+      ]
+    ]
+  }
+}

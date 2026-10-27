@@ -1,0 +1,69 @@
+{
+  "model_path": "/app/models/baseline_standard.h5",
+  "inference_test": {
+    "input_shape": [
+      1,
+      25
+    ],
+    "output_shape": [
+      1,
+      5
+    ],
+    "prob_sum": 0.9999999403953552,
+    "sample_probs": [
+      3.242351339017234e-18,
+      2.5714741100357763e-11,
+      9.991981547572759e-26,
+      3.786515662795864e-05,
+      0.9999620914459229
+    ],
+    "sample_action": 4,
+    "status": "PASSED"
+  },
+  "num_rounds": 10,
+  "episodes_per_round": 10,
+  "total_episodes": 100,
+  "teacher_round_rewards_int": [
+    88,
+    97,
+    92,
+    83,
+    91,
+    94,
+    95,
+    90,
+    81,
+    98
+  ],
+  "round_rewards_float": [
+    88.04,
+    97.42,
+    93.0,
+    83.92,
+    91.46,
+    94.33,
+    95.46,
+    90.96,
+    81.88,
+    98.5
+  ],
+  "mean_round_reward": 91.5,
+  "std_round_reward": 5.22,
+  "mean_episode_reward": 9.15,
+  "std_episode_reward": 1.79,
+  "mean_episode_steps": 10.3,
+  "collision_count": 14,
+  "collision_rate": 14.0,
+  "arrival_count": 0,
+  "arrival_rate": 0.0,
+  "timeout_count": 86,
+  "timeout_rate": 86.0,
+  "action_distribution": {
+    "0: LANE_LEFT": 2.61,
+    "1: IDLE": 23.14,
+    "2: LANE_RIGHT": 0.97,
+    "3: FASTER": 25.46,
+    "4: SLOWER": 47.82
+  },
+  "status": "COMPLETED_SUCCESSFULLY"
+}

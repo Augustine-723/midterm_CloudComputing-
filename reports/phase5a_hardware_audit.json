@@ -1,0 +1,42 @@
+{
+  "host_hardware": {
+    "cpu_model": "Intel(R) Core(TM) i5-9400 CPU @ 2.90GHz",
+    "physical_cores": 6,
+    "logical_threads": 6,
+    "total_memory_gb": 31.27,
+    "available_memory_gb": 8.98,
+    "host_gpu": "Not accessible inside container (CPU container mode)",
+    "nvidia_driver": "N/A",
+    "cuda_version": "N/A"
+  },
+  "tensorflow_version": "2.13.0",
+  "physical_devices": {
+    "cpu": [
+      "/physical_device:CPU:0"
+    ],
+    "gpu": []
+  },
+  "logical_devices": {
+    "cpu": [
+      "/device:CPU:0",
+      "/device:CPU:1"
+    ],
+    "gpu": []
+  },
+  "strategy": "tf.distribute.MirroredStrategy",
+  "devices_used": [
+    "/device:CPU:0",
+    "/device:CPU:1"
+  ],
+  "num_replicas_in_sync": 2,
+  "sharded_batch_test": {
+    "global_batch_size": 8,
+    "per_replica_batch_size": 4,
+    "replica_ids_verified": [
+      0,
+      1
+    ],
+    "status": "PASSED"
+  },
+  "recommended_approach": "CPU Logical Devices MirroredStrategy (Option B)"
+}

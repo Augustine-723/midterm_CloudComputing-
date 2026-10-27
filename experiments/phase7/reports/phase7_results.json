@@ -1,0 +1,413 @@
+{
+  "control_baseline": {
+    "accuracy": 0.9464,
+    "loss": 0.14980070292949677,
+    "macro_precision": 0.910288540811689,
+    "macro_recall": 0.9291577155055425,
+    "macro_f1": 0.9188388251165565,
+    "weighted_f1": 0.9464474929945541,
+    "total_errors": 268,
+    "longitudinal_analysis": {
+      "faster_predicted_as_slower": 53,
+      "slower_predicted_as_faster": 53,
+      "total_longitudinal_errors": 106,
+      "percent_of_all_errors": 39.55
+    },
+    "avg_latency_ms": 1.176,
+    "param_count": 11909,
+    "per_class": {
+      "0: LANE_LEFT": {
+        "name": "LANE_LEFT",
+        "support": 134,
+        "tp": 118,
+        "fp": 12,
+        "fn": 16,
+        "precision": 0.9076923076923077,
+        "recall": 0.8805970149253731,
+        "f1_score": 0.8939393939393939
+      },
+      "1: IDLE": {
+        "name": "IDLE",
+        "support": 1271,
+        "tp": 1201,
+        "fp": 73,
+        "fn": 70,
+        "precision": 0.9427001569858713,
+        "recall": 0.94492525570417,
+        "f1_score": 0.9438113948919451
+      },
+      "2: LANE_RIGHT": {
+        "name": "LANE_RIGHT",
+        "support": 40,
+        "tp": 37,
+        "fp": 9,
+        "fn": 3,
+        "precision": 0.8043478260869565,
+        "recall": 0.925,
+        "f1_score": 0.8604651162790697
+      },
+      "3: FASTER": {
+        "name": "FASTER",
+        "support": 1424,
+        "tp": 1335,
+        "fp": 93,
+        "fn": 89,
+        "precision": 0.9348739495798319,
+        "recall": 0.9375,
+        "f1_score": 0.9361851332398318
+      },
+      "4: SLOWER": {
+        "name": "SLOWER",
+        "support": 2131,
+        "tp": 2041,
+        "fp": 81,
+        "fn": 90,
+        "precision": 0.9618284637134779,
+        "recall": 0.9577663068981699,
+        "f1_score": 0.9597930872325416
+      }
+    },
+    "confusion_matrix": [
+      [
+        118,
+        10,
+        0,
+        3,
+        3
+      ],
+      [
+        5,
+        1201,
+        5,
+        35,
+        25
+      ],
+      [
+        0,
+        1,
+        37,
+        2,
+        0
+      ],
+      [
+        4,
+        29,
+        3,
+        1335,
+        53
+      ],
+      [
+        3,
+        33,
+        1,
+        53,
+        2041
+      ]
+    ],
+    "display_name": "Control: Baseline Standard",
+    "environment_evaluation": {
+      "mean_round_reward_float": 91.5,
+      "std_round_reward_float": 5.22,
+      "mean_round_reward_int": 90.9,
+      "mean_episode_reward": 9.15,
+      "teacher_round_rewards_int": [
+        88,
+        97,
+        92,
+        83,
+        91,
+        94,
+        95,
+        90,
+        81,
+        98
+      ],
+      "collision_count": 14,
+      "collision_rate_percent": 14.0,
+      "north_exit_arrival_count": 26,
+      "north_exit_arrival_rate_percent": 26.0,
+      "speed_saturation_rate_percent": 35.72,
+      "action_distribution": {
+        "0: LANE_LEFT": 2.61,
+        "1: IDLE": 23.14,
+        "2: LANE_RIGHT": 0.97,
+        "3: FASTER": 25.46,
+        "4: SLOWER": 47.82
+      }
+    }
+  },
+  "experiment_b": {
+    "accuracy": 0.9422,
+    "loss": 0.1578216552734375,
+    "macro_precision": 0.8924881321846536,
+    "macro_recall": 0.912437918075266,
+    "macro_f1": 0.8999641579105134,
+    "weighted_f1": 0.9421971759646917,
+    "total_errors": 289,
+    "longitudinal_analysis": {
+      "faster_predicted_as_slower": 57,
+      "slower_predicted_as_faster": 46,
+      "total_longitudinal_errors": 103,
+      "percent_of_all_errors": 35.64
+    },
+    "avg_latency_ms": 25.033,
+    "param_count": 14981,
+    "per_class": {
+      "0: LANE_LEFT": {
+        "name": "LANE_LEFT",
+        "support": 134,
+        "tp": 108,
+        "fp": 13,
+        "fn": 26,
+        "precision": 0.8925619834710744,
+        "recall": 0.8059701492537313,
+        "f1_score": 0.8470588235294118
+      },
+      "1: IDLE": {
+        "name": "IDLE",
+        "support": 1271,
+        "tp": 1189,
+        "fp": 77,
+        "fn": 82,
+        "precision": 0.9391785150078988,
+        "recall": 0.9354838709677419,
+        "f1_score": 0.9373275522270398
+      },
+      "2: LANE_RIGHT": {
+        "name": "LANE_RIGHT",
+        "support": 40,
+        "tp": 37,
+        "fp": 13,
+        "fn": 3,
+        "precision": 0.74,
+        "recall": 0.925,
+        "f1_score": 0.8222222222222222
+      },
+      "3: FASTER": {
+        "name": "FASTER",
+        "support": 1424,
+        "tp": 1335,
+        "fp": 96,
+        "fn": 89,
+        "precision": 0.9329140461215933,
+        "recall": 0.9375,
+        "f1_score": 0.935201401050788
+      },
+      "4: SLOWER": {
+        "name": "SLOWER",
+        "support": 2131,
+        "tp": 2042,
+        "fp": 90,
+        "fn": 89,
+        "precision": 0.9577861163227017,
+        "recall": 0.9582355701548568,
+        "f1_score": 0.9580107905231058
+      }
+    },
+    "confusion_matrix": [
+      [
+        108,
+        16,
+        1,
+        5,
+        4
+      ],
+      [
+        5,
+        1189,
+        5,
+        43,
+        29
+      ],
+      [
+        0,
+        1,
+        37,
+        2,
+        0
+      ],
+      [
+        5,
+        25,
+        2,
+        1335,
+        57
+      ],
+      [
+        3,
+        35,
+        5,
+        46,
+        2042
+      ]
+    ],
+    "display_name": "Exp B: Feature Engineering MLP",
+    "environment_evaluation": {
+      "mean_round_reward_float": 91.35,
+      "std_round_reward_float": 4.88,
+      "mean_round_reward_int": 90.9,
+      "mean_episode_reward": 9.14,
+      "teacher_round_rewards_int": [
+        89,
+        97,
+        92,
+        83,
+        92,
+        96,
+        95,
+        89,
+        82,
+        94
+      ],
+      "collision_count": 15,
+      "collision_rate_percent": 15.0,
+      "north_exit_arrival_count": 27,
+      "north_exit_arrival_rate_percent": 27.0,
+      "speed_saturation_rate_percent": 34.72,
+      "action_distribution": {
+        "0: LANE_LEFT": 2.33,
+        "1: IDLE": 23.38,
+        "2: LANE_RIGHT": 0.87,
+        "3: FASTER": 26.38,
+        "4: SLOWER": 47.04
+      }
+    }
+  },
+  "experiment_c": {
+    "accuracy": 0.9008,
+    "loss": 0.2817690074443817,
+    "macro_precision": 0.843458343030967,
+    "macro_recall": 0.8076903622741675,
+    "macro_f1": 0.8230534173575517,
+    "weighted_f1": 0.9004351571373652,
+    "total_errors": 496,
+    "longitudinal_analysis": {
+      "faster_predicted_as_slower": 87,
+      "slower_predicted_as_faster": 87,
+      "total_longitudinal_errors": 174,
+      "percent_of_all_errors": 35.08
+    },
+    "avg_latency_ms": 5.126,
+    "param_count": 6917,
+    "per_class": {
+      "0: LANE_LEFT": {
+        "name": "LANE_LEFT",
+        "support": 134,
+        "tp": 108,
+        "fp": 25,
+        "fn": 26,
+        "precision": 0.8120300751879699,
+        "recall": 0.8059701492537313,
+        "f1_score": 0.8089887640449439
+      },
+      "1: IDLE": {
+        "name": "IDLE",
+        "support": 1271,
+        "tp": 1119,
+        "fp": 132,
+        "fn": 152,
+        "precision": 0.894484412470024,
+        "recall": 0.8804091266719118,
+        "f1_score": 0.887390959555908
+      },
+      "2: LANE_RIGHT": {
+        "name": "LANE_RIGHT",
+        "support": 40,
+        "tp": 21,
+        "fp": 9,
+        "fn": 19,
+        "precision": 0.7,
+        "recall": 0.525,
+        "f1_score": 0.6
+      },
+      "3: FASTER": {
+        "name": "FASTER",
+        "support": 1424,
+        "tp": 1284,
+        "fp": 155,
+        "fn": 140,
+        "precision": 0.8922863099374566,
+        "recall": 0.901685393258427,
+        "f1_score": 0.8969612294795668
+      },
+      "4: SLOWER": {
+        "name": "SLOWER",
+        "support": 2131,
+        "tp": 1972,
+        "fp": 175,
+        "fn": 159,
+        "precision": 0.9184909175593852,
+        "recall": 0.9253871421867668,
+        "f1_score": 0.9219261337073399
+      }
+    },
+    "confusion_matrix": [
+      [
+        108,
+        14,
+        1,
+        6,
+        5
+      ],
+      [
+        12,
+        1119,
+        7,
+        58,
+        75
+      ],
+      [
+        0,
+        7,
+        21,
+        4,
+        8
+      ],
+      [
+        9,
+        43,
+        1,
+        1284,
+        87
+      ],
+      [
+        4,
+        68,
+        0,
+        87,
+        1972
+      ]
+    ],
+    "display_name": "Exp C: Vehicle-Aware Network",
+    "environment_evaluation": {
+      "mean_round_reward_float": 92.97,
+      "std_round_reward_float": 6.72,
+      "mean_round_reward_int": 92.5,
+      "mean_episode_reward": 9.3,
+      "teacher_round_rewards_int": [
+        96,
+        98,
+        98,
+        84,
+        87,
+        95,
+        95,
+        95,
+        78,
+        99
+      ],
+      "collision_count": 12,
+      "collision_rate_percent": 12.0,
+      "north_exit_arrival_count": 29,
+      "north_exit_arrival_rate_percent": 29.0,
+      "speed_saturation_rate_percent": 37.04,
+      "action_distribution": {
+        "0: LANE_LEFT": 3.17,
+        "1: IDLE": 23.13,
+        "2: LANE_RIGHT": 0.48,
+        "3: FASTER": 27.35,
+        "4: SLOWER": 45.87
+      }
+    }
+  }
+}

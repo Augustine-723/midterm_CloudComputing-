@@ -1,0 +1,167 @@
+{
+  "metadata": {
+    "title": "Phase 6B Pre-Submission Verification & Data Consistency Audit",
+    "audit_timestamp": "2026-10-22",
+    "overall_status": "PASS_WITH_WARNINGS"
+  },
+  "reward_statistics_audit": {
+    "status": "PASS",
+    "baseline_standard": {
+      "teacher_10_round_int": [
+        88,
+        97,
+        92,
+        83,
+        91,
+        94,
+        95,
+        90,
+        81,
+        98
+      ],
+      "int_mean": 90.9,
+      "int_std_pop": 5.337602458033007,
+      "int_std_sample": 5.626327003965869,
+      "raw_float_10_round": [
+        88.04,
+        97.42,
+        93.0,
+        83.92,
+        91.46,
+        94.33,
+        95.46,
+        90.96,
+        81.88,
+        98.5
+      ],
+      "float_mean": 91.49699999999999,
+      "float_std_pop": 5.2177812334362965,
+      "float_std_sample": 5.5000243433804705,
+      "mean_episode_reward": 9.15,
+      "std_episode_reward": 1.79,
+      "difference_float_vs_int_mean": 0.6,
+      "note": "Reported 91.50 is the exact mean of raw floating-point round rewards prior to integer truncation. Integer-truncated mean is 90.90 (-0.60 per round truncation loss)."
+    },
+    "distributed_cpu_best": {
+      "teacher_10_round_int": [
+        94,
+        97,
+        91,
+        83,
+        87,
+        96,
+        95,
+        91,
+        80,
+        98
+      ],
+      "int_mean": 91.2,
+      "int_std_pop": 5.793099343184096,
+      "int_std_sample": 6.106462878695726,
+      "raw_float_10_round": [
+        94.21,
+        97.62,
+        91.29,
+        83.92,
+        87.54,
+        96.0,
+        95.58,
+        91.04,
+        80.67,
+        98.21
+      ],
+      "float_mean": 91.608,
+      "float_std_pop": 5.632805340148013,
+      "float_std_sample": 5.937498163742404,
+      "mean_episode_reward": 9.16,
+      "std_episode_reward": 1.81,
+      "difference_float_vs_int_mean": 0.41,
+      "note": "Reported 91.61 is the exact mean of raw floating-point round rewards prior to integer truncation. Integer-truncated mean is 91.20 (-0.41 per round truncation loss)."
+    }
+  },
+  "arrival_rate_investigation": {
+    "status": "PASS",
+    "root_cause": "Measurement Definition Discrepancy. highway-env 1.8.2 roundabout-v0 info dict contains only [speed, crashed, action, rewards], with NO arrived key. Phase 6A used info.get(\"arrived\", False), which always returned False (0%). Phase 3A evaluated spatial destination arrival via (\"nxs\" in vehicle.lane_index) on un-crashed termination, which achieves 26% on Phase 6A seeds (and 31% on Phase 3A seeds). Furthermore, roundabout-v0 duration=11 limits episodes to 11 steps, truncating every non-crashed episode regardless of whether destination was reached.",
+    "phase3a_spatial_arrival_rate_phase6a_seeds": "26.0%",
+    "phase6a_info_key_arrival_rate": "0.0%",
+    "environment_source_audit": {
+      "terminated_condition": "self.vehicle.crashed",
+      "truncated_condition": "self.time >= self.config[\"duration\"] (duration=11s = 11 steps at 1Hz)",
+      "planned_destination": "\"nxs\" (North exit southbound)"
+    }
+  },
+  "model_integrity_audit": {
+    "status": "PASS",
+    "models": {
+      "baseline_standard": {
+        "path": "/app/models/baseline_standard.h5",
+        "size_bytes": 175656,
+        "sha256": "ccc4b358d95e9b56805ef8244eb7247d60f9a5d7bc5e5340c197652fef837e02",
+        "input_shape": [
+          null,
+          25
+        ],
+        "output_shape": [
+          null,
+          5
+        ],
+        "val_accuracy": 0.9464,
+        "val_errors": 268,
+        "status": "PASS"
+      },
+      "gradient_tape_best": {
+        "path": "/app/models/gradient_tape_best.h5",
+        "size_bytes": 65688,
+        "sha256": "fe83d4fdd89dfae83c406ced5a4fadd94725199937adab3fddfb5ec017428afd",
+        "input_shape": [
+          null,
+          25
+        ],
+        "output_shape": [
+          null,
+          5
+        ],
+        "val_accuracy": 0.9412,
+        "val_errors": 294,
+        "status": "PASS"
+      },
+      "distributed_cpu_best": {
+        "path": "/app/models/distributed_cpu_best.h5",
+        "size_bytes": 65688,
+        "sha256": "56ac256b6211f8b8d78accb2bc53e5734be7820d4ff227fef7676104c3539101",
+        "input_shape": [
+          null,
+          25
+        ],
+        "output_shape": [
+          null,
+          5
+        ],
+        "val_accuracy": 0.946,
+        "val_errors": 270,
+        "status": "PASS"
+      }
+    }
+  },
+  "teacher_compatibility_audit": {
+    "status": "WARNING",
+    "findings": [
+      {
+        "item": "Teacher Model Filename",
+        "status": "WARNING",
+        "detail": "NN_train.py specifies model.save(\"YOURMODEL.h5\"). To prevent filename mismatch during automated grading, baseline_standard.h5 should be copied or symlinked to YOURMODEL.h5 in the project root."
+      },
+      {
+        "item": "Missing import highway_env in NN_test.py",
+        "status": "WARNING",
+        "detail": "Teacher original NN_test.py only imports gymnasium as gym without importing highway_env. Without importing highway_env, gym.make(\"roundabout-v0\") will fail. Our final_model_test.py includes this import, but teacher's raw NN_test.py will need it if teacher executes NN_test.py directly."
+      },
+      {
+        "item": "Integer Truncation in Reward",
+        "status": "PASS",
+        "detail": "Teacher NN_test.py line 35 uses return int(total_reward). Both integer-truncated rewards and raw float rewards are now explicitly audited and documented."
+      }
+    ]
+  },
+  "submission_readiness": "READY_FOR_PHASE_6C"
+}
