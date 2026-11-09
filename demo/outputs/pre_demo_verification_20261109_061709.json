@@ -1,0 +1,31 @@
+{
+  "check_a_model_loading": {
+    "status": "PASS",
+    "sha256": "ccc4b358d95e9b56805ef8244eb7247d60f9a5d7bc5e5340c197652fef837e02",
+    "input_shape": [
+      null,
+      25
+    ],
+    "output_shape": [
+      null,
+      5
+    ],
+    "total_params": 11909
+  },
+  "check_b_validation_accuracy": {
+    "status": "PASS",
+    "note": "VALIDATION ONLY — NOT OFFICIAL TEST ACCURACY",
+    "samples": 5000,
+    "accuracy": 0.9464,
+    "loss": 0.14980070292949677,
+    "errors": 268
+  },
+  "check_c_simulation": {
+    "status": "PASS",
+    "steps": 11,
+    "reward": 9.37
+  },
+  "check_d_runner_handling": {
+    "status": "PASS"
+  }
+}

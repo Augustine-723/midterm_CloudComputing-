@@ -31,7 +31,7 @@ def resolve_data_dir():
     candidates = [
         os.path.join(SCRIPT_DIR, "dataset"),
         os.path.join(SCRIPT_DIR, "..", "dataset"),
-        "/app/dataset"
+        os.path.join(os.getcwd(), "dataset"),
     ]
     for c in candidates:
         if os.path.exists(os.path.join(c, "train.npz")):
@@ -139,4 +139,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

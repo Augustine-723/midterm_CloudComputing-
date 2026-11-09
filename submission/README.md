@@ -27,7 +27,7 @@ This project implements a Deep Neural Network using Supervised Learning to predi
 - **Validation Set (`dataset/validation.npz`):** 5,000 samples
 - **Input Shape:** `(N, 25)` flattened kinematics observations (5 vehicles $\times$ 5 features: presence, x, y, vx, vy)
 - **Output Shape:** `(N, 1)` discrete class labels $\in \{0, 1, 2, 3, 4\}$
-- **Data Placement:** By default, datasets are expected in `dataset/train.npz` and `dataset/validation.npz` (either in the project root or relative to the script directory).
+- **Data Placement:** The ZIP intentionally excludes the datasets. For training, place them in `dataset/train.npz` and `dataset/validation.npz` under the extracted folder, the project root beside `submission/`, or the current working directory.
 
 ---
 
@@ -64,6 +64,7 @@ python NN_test.py
   ```text
   [88, 97, 92, 83, 91, 94, 95, 90, 81, 98]
   ```
+  This is an example of the output format; the environment is not seeded by this script, so reward values vary between runs.
 
 ---
 
@@ -88,6 +89,7 @@ Implements true multi-device synchronous Data Parallelism via `tf.distribute.Mir
 - **Batch Sharding:** Global Batch Size of 64 is automatically sharded into 32 samples per replica.
 - **Loss Scaling & Synchronization:** Uses `tf.nn.compute_average_loss()` and All-Reduce gradient accumulation across replicas via `strategy.run()`.
 - **Academic Integrity Note:** Uses two Logical CPU Devices on a single physical CPU socket. No multi-GPU or speedup is claimed for single-socket CPU execution.
+- **Runtime Evidence:** The training script reports and asserts both replica IDs, local shard sizes, and exact synchronization of all trainable variables. In a one-epoch Docker smoke test, it reported replica IDs `[0, 1]`, shard sizes `[32, 32]`, and all 6 trainable variables synchronized.
 - To run:
   ```bash
   python train_distributed.py
@@ -95,24 +97,25 @@ Implements true multi-device synchronous Data Parallelism via `tf.distribute.Mir
 
 ---
 
-## 9. Docker Execution Commands
-To run inside the verified Docker container:
+## 9. Running the Extracted ZIP
+Extract the ZIP into a new directory, then run commands from that directory inside the course-provided Docker environment:
 ```bash
-# 1. Start container with project bind-mounted
-docker run -it --name roundabout-midterm -v $(pwd):/app -w /app roundabout-midterm bash
+# Test the packaged model in roundabout-v0 (does not require the dataset)
+python NN_test.py
 
-# 2. Run test script inside container
-docker exec roundabout-midterm python /app/submission/NN_test.py
+# Train the standard model (requires dataset/train.npz and dataset/validation.npz)
+python NN_train.py
 
-# 3. Run submission integrity verification
-docker exec roundabout-midterm python /app/scripts/verify_final_submission.py
+# Optional bonus training pipelines (also require the datasets)
+python train_gradient_tape.py
+python train_distributed.py
 ```
 
 ---
 
 ## 10. Reproduction Checklist
 1. Verify `YOURMODEL.h5` exists in the submission directory.
-2. Ensure `dataset/train.npz` and `dataset/validation.npz` are present.
-3. Run `python NN_test.py` to obtain environment rewards.
+2. Run `python NN_test.py` to obtain the 10 integer round rewards. This environment evaluation does not require the dataset.
+3. Before training, place `train.npz` and `validation.npz` in a `dataset/` directory next to the extracted scripts, in the project root beside `submission/`, or in the current working directory.
 4. Run `python NN_train.py` if retraining from scratch is desired.
-
+5. To audit the two-Logical-CPU bonus, run `python train_distributed.py`; it prints and asserts the replica IDs, sharded batch sizes, and replica-weight synchronization.
